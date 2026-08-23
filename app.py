@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 import shap
+import matplotlib.pyplot as plt
 
 
 # Load trained model
@@ -243,7 +244,49 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     ).head(5)
 
 
-    # Display
+    # Clean feature names
+    explanation["Feature"] = (
+        explanation["Feature"]
+        .str.replace("remainder__", "", regex=False)
+        .str.replace("categorical__", "", regex=False)
+        .str.replace("_", " ", regex=False)
+    )
+
+
+    # -----------------------------
+    # SHAP Visual Chart
+    # -----------------------------
+
+    st.subheader("📊 Top Risk Factors")
+
+    chart_data = explanation.sort_values(
+        "SHAP Value",
+        ascending=True
+    )
+
+    fig, ax = plt.subplots(figsize=(9, 4))
+
+    ax.barh(
+        chart_data["Feature"],
+        chart_data["SHAP Value"]
+    )
+
+    ax.axvline(0)
+
+    ax.set_xlabel("SHAP Impact")
+    ax.set_ylabel("Transaction Feature")
+    ax.set_title("Features Influencing Fraud Risk")
+
+    plt.tight_layout()
+
+    st.pyplot(fig)
+
+    plt.close(fig)
+
+
+    # Display table
+    st.subheader("📋 SHAP Details")
+
     st.dataframe(
         explanation[["Feature", "SHAP Value"]],
         width="stretch"
@@ -251,7 +294,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
 
     # Simple explanation
-    st.subheader("📌 Top Risk Factors")
+    st.subheader("📌 Risk Factor Explanation")
 
     for _, row in explanation.iterrows():
 
