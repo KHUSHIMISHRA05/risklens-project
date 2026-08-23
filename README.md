@@ -75,3 +75,24 @@ Business Risk Decision
 
 ### Business Impact
 ![Business Impact](assets/screenshots/business-impact.png)
+
+## 🧠 Machine Learning Workflow
+
+```text
+Transaction Input
+       ↓
+Data Preprocessing
+       ↓
+Feature Transformation
+       ↓
+Machine Learning Model
+       ↓
+Fraud Probability
+       ↓
+Risk Score
+       ↓
+Risk Classification
+       ↓
+SHAP Explanation
+       ↓
+Business Risk Decision
