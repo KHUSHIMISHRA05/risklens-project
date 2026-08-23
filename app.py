@@ -101,7 +101,7 @@ st.divider()
 
 
 # Analyze transaction
-if st.button("🔍 Analyze Transaction", use_container_width=True):
+if st.button("🔍 Analyze Transaction", width="stretch"):
 
     transaction = {
         "Transaction Amount": transaction_amount,
@@ -246,7 +246,7 @@ if st.button("🔍 Analyze Transaction", use_container_width=True):
     # Display
     st.dataframe(
         explanation[["Feature", "SHAP Value"]],
-        use_container_width=True
+        width="stretch"
     )
 
 
@@ -266,7 +266,9 @@ if st.button("🔍 Analyze Transaction", use_container_width=True):
             st.write(
                 f"🟢 **{feature}** decreased the fraud risk."
             )
-                # -----------------------------
+
+
+    # -----------------------------
     # Business Impact
     # -----------------------------
 
@@ -279,12 +281,14 @@ if st.button("🔍 Analyze Transaction", use_container_width=True):
         "a risky transaction."
     )
 
+
     review_cost = st.number_input(
         "Cost of Reviewing One Risky Transaction (₹)",
         min_value=0.0,
         value=100.0,
         step=10.0
     )
+
 
     # Estimate review cost based on risk level
     if risk_score >= 70:
@@ -299,6 +303,7 @@ if st.button("🔍 Analyze Transaction", use_container_width=True):
         estimated_cost = 0.0
         business_impact = "Low"
 
+
     col1, col2 = st.columns(2)
 
     with col1:
@@ -312,6 +317,7 @@ if st.button("🔍 Analyze Transaction", use_container_width=True):
             "Business Impact",
             business_impact
         )
+
 
     # Business recommendation
     if risk_score >= 70:
@@ -334,4 +340,3 @@ if st.button("🔍 Analyze Transaction", use_container_width=True):
             "💡 Recommendation: Transaction can proceed with "
             "normal checks."
         )
-        
