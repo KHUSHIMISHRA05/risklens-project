@@ -38,36 +38,7 @@ The goal is to make fraud predictions easier to understand and useful for risk-m
 
 ---
 
-## 🧠 Machine Learning Workflow
 
-```text
-Transaction Input
-       ↓
-Data Preprocessing
-       ↓
-Feature Transformation
-       ↓
-Machine Learning Model
-       ↓
-Fraud Probability
-       ↓
-Risk Score
-       ↓
-Risk Classification
-       ↓
-SHAP Explanation
-       ↓
-Business Risk Decision
-
-## 📸 Dashboard Screenshots
-
-### RiskLens Dashboard
-![RiskLens Dashboard](assets/screenshots/dashboard.png)
-
-### Risk Assessment
-![Risk Assessment](assets/screenshots/risk-assessment.png)
-
-### Risk Decision
 ![Risk Decision](assets/screenshots/risk-decision.png)
 
 ### SHAP Analysis
@@ -94,5 +65,7 @@ Risk Score
 Risk Classification
        ↓
 SHAP Explanation
+       ↓
+Business Risk Decision
        ↓
 Business Risk Decision
