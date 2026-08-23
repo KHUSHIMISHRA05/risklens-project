@@ -58,3 +58,59 @@ Risk Classification
 SHAP Explanation
        ↓
 Business Risk Decision
+---
+
+## 🔎 Explainable AI
+
+RiskLens uses **SHAP (SHapley Additive exPlanations)** to identify the transaction features that contribute most strongly to a prediction.
+
+This helps users understand **why** a transaction received a particular risk score instead of treating the model as a black box.
+
+---
+
+## 🖥️ Dashboard Screenshots
+
+### Main Dashboard
+
+![RiskLens Dashboard](assets/screenshots/dashboard.png)
+
+### Risk Assessment
+
+![Risk Assessment](assets/screenshots/risk-assessment.png)
+
+### SHAP Risk Analysis
+
+![SHAP Analysis](assets/screenshots/shap-analysis.png)
+
+### Business Impact
+
+![Business Impact](assets/screenshots/business-impact.png)
+
+### Risk Decision
+
+![Risk Decision](assets/screenshots/risk-decision.png)
+
+---
+
+## 🗂️ Project Structure
+
+```text
+risklens-project/
+│
+├── assets/
+│   └── screenshots/
+│       ├── dashboard.png
+│       ├── risk-assessment.png
+│       ├── shap-analysis.png
+│       ├── business-impact.png
+│       └── risk-decision.png
+│
+├── data/
+├── models/
+├── notebooks/
+├── src/
+│
+├── app.py
+├── requirements.txt
+├── .gitignore
+└── README.md
