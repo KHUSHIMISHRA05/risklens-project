@@ -58,3 +58,38 @@ Risk Classification
 SHAP Explanation
        ↓
 Business Risk Decision
+
+
+---
+
+## 📸 Dashboard Screenshots
+
+### 🛡️ Risk Assessment
+
+![Risk Assessment](assets/screenshots/risk-assessment.png)
+
+---
+
+### 🔎 SHAP Analysis
+
+![SHAP Analysis](assets/screenshots/shap-analysis.png)
+
+---
+
+### 💰 Business Impact Analysis
+
+![Business Impact](assets/screenshots/business-impact.png)
+
+---
+
+### 🚦 Risk Decision
+
+![Risk Decision](assets/screenshots/risk-decision.png)
+
+---
+
+### 🖥️ RiskLens Dashboard
+
+![RiskLens Dashboard](assets/screenshots/dashboard.png)
+
+---
