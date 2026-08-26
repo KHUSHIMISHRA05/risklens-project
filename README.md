@@ -38,15 +38,6 @@ The goal is to make fraud predictions easier to understand and useful for risk-m
 
 ---
 
-
-![Risk Decision](assets/screenshots/risk-decision.png)
-
-### SHAP Analysis
-![SHAP Analysis](assets/screenshots/shap-analysis.png)
-
-### Business Impact
-![Business Impact](assets/screenshots/business-impact.png)
-
 ## 🧠 Machine Learning Workflow
 
 ```text
@@ -65,7 +56,5 @@ Risk Score
 Risk Classification
        ↓
 SHAP Explanation
-       ↓
-Business Risk Decision
        ↓
 Business Risk Decision
