@@ -58,7 +58,7 @@ Risk Classification
 SHAP Explanation
        ↓
 Business Risk Decision
-
+```
 
 ---
 
@@ -91,5 +91,6 @@ Business Risk Decision
 ### 🖥️ RiskLens Dashboard
 
 ![RiskLens Dashboard](assets/screenshots/dashboard.png)
+
 
 ---
