@@ -113,4 +113,22 @@ git clone https://github.com/KHUSHIMISHRA05/risklens-project.git
 
 cd risklens-project
 
+### 2. Add the Trained Model
+
+The trained model file is excluded from GitHub because of its large size.
+
+To run the application locally, place the trained `risk_model.pkl` file inside the `models/` folder.
+
+The required structure is:
+
+```text
+risklens-project/
+│
+├── app.py
+├── requirements.txt
+├── models/
+│   └── risk_model.pkl
+├── src/
+├── notebooks/
+└── assets/
 
