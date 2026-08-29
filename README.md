@@ -100,3 +100,17 @@ Business Risk Decision
 ![False Positive Cost](assets/screenshots/false-positive-cost.png)
 
 ![False Positive Cost Chart](assets/screenshots/false-positive-cost-chart.png)
+
+---
+
+
+## ⚙️ How to Run
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/KHUSHIMISHRA05/risklens-project.git
+
+cd risklens-project
+
+
