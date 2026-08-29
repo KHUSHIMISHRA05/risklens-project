@@ -62,6 +62,7 @@ Business Risk Decision
 
 ---
 
+
 ## 📸 Dashboard Screenshots
 
 ### 🛡️ Risk Assessment
@@ -92,5 +93,10 @@ Business Risk Decision
 
 ![RiskLens Dashboard](assets/screenshots/dashboard.png)
 
-
 ---
+
+### ⚖️ False Positive vs Missed Fraud Cost
+
+![False Positive Cost](assets/screenshots/false-positive-cost.png)
+
+![False Positive Cost Chart](assets/screenshots/false-positive-cost-chart.png)

@@ -383,3 +383,139 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
             "💡 Recommendation: Transaction can proceed with "
             "normal checks."
         )
+
+
+    # -----------------------------
+    # False Positive vs Missed Fraud Cost
+    # -----------------------------
+
+    st.divider()
+
+    st.header("⚖️ False Positive vs Missed Fraud Cost")
+
+    st.write(
+        "This analysis demonstrates the business trade-off between "
+        "incorrectly flagging genuine customers and missing fraudulent "
+        "transactions."
+    )
+
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        decision_threshold = st.slider(
+            "Decision Threshold",
+            min_value=0.10,
+            max_value=0.90,
+            value=0.50,
+            step=0.05
+        )
+
+    with col2:
+        missed_fraud_cost = st.number_input(
+            "Estimated Cost of One Missed Fraud (₹)",
+            min_value=0.0,
+            value=500.0,
+            step=50.0
+        )
+
+
+    false_positive_cost = review_cost
+
+
+    # Confusion matrix values from the trained model's test evaluation
+    # TN = 274985, FP = 4838, FN = 10625, TP = 4143
+    baseline_tn = 274985
+    baseline_fp = 4838
+    baseline_fn = 10625
+    baseline_tp = 4143
+
+
+    # Use the baseline test-set confusion matrix as the reference
+    # for the business cost comparison.
+    false_positives = baseline_fp
+    missed_frauds = baseline_fn
+
+    total_false_positive_cost = (
+        false_positives * false_positive_cost
+    )
+
+    total_missed_fraud_cost = (
+        missed_frauds * missed_fraud_cost
+    )
+
+    total_estimated_cost = (
+        total_false_positive_cost +
+        total_missed_fraud_cost
+    )
+
+
+    st.subheader("📊 Cost Trade-off")
+
+
+    cost_data = pd.DataFrame({
+        "Cost Category": [
+            "False Positive Cost",
+            "Missed Fraud Cost"
+        ],
+        "Estimated Cost (₹)": [
+            total_false_positive_cost,
+            total_missed_fraud_cost
+        ]
+    })
+
+
+    st.dataframe(
+        cost_data,
+        width="stretch",
+        hide_index=True
+    )
+
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric(
+            "False Positives",
+            f"{false_positives:,}"
+        )
+
+    with col2:
+        st.metric(
+            "Missed Frauds",
+            f"{missed_frauds:,}"
+        )
+
+    with col3:
+        st.metric(
+            "Total Estimated Cost",
+            f"₹{total_estimated_cost:,.2f}"
+        )
+
+
+    # Cost comparison chart
+    fig2, ax2 = plt.subplots(figsize=(9, 4))
+
+    ax2.bar(
+        cost_data["Cost Category"],
+        cost_data["Estimated Cost (₹)"]
+    )
+
+    ax2.set_ylabel("Estimated Cost (₹)")
+    ax2.set_title("False Positive Cost vs Missed Fraud Cost")
+
+    plt.tight_layout()
+
+    st.pyplot(fig2)
+
+    plt.close(fig2)
+
+
+    st.info(
+        f"💡 At a decision threshold of {decision_threshold:.2f}, "
+        f"the reference test results contain {false_positives:,} "
+        f"false positives and {missed_frauds:,} missed frauds. "
+        f"The estimated combined cost is "
+        f"₹{total_estimated_cost:,.2f}."
+    )
+    
