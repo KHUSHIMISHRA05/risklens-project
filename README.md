@@ -1,4 +1,4 @@
-# 🛡️ RiskLens
+#  RiskLens
 
 ### AI-Powered Transaction Fraud Risk Manager
 
@@ -8,7 +8,7 @@ It combines machine learning, SHAP explainability, and Streamlit to provide an i
 
 ---
 
-## 🚀 Overview
+##  Overview
 
 Fraud detection systems often focus only on predicting whether a transaction is fraudulent.
 
@@ -26,19 +26,19 @@ The goal is to make fraud predictions easier to understand and useful for risk-m
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-- 🔍 **Fraud Prediction** — Estimates the probability that a transaction is fraudulent.
-- 📊 **Risk Score** — Converts fraud probability into a 0–100 risk score.
-- 🚦 **Risk Classification** — Categorizes transactions as Low, Medium, or High risk.
-- 🔎 **SHAP Explainability** — Explains which features influenced the prediction.
-- 📈 **Risk Factor Visualization** — Shows the most influential transaction features.
-- 💰 **Business Impact Analysis** — Estimates potential operational review impact.
-- 🖥️ **Interactive Dashboard** — Built using Streamlit.
+-  **Fraud Prediction** — Estimates the probability that a transaction is fraudulent.
+-  **Risk Score** — Converts fraud probability into a 0–100 risk score.
+-  **Risk Classification** — Categorizes transactions as Low, Medium, or High risk.
+-  **SHAP Explainability** — Explains which features influenced the prediction.
+-  **Risk Factor Visualization** — Shows the most influential transaction features.
+-  **Business Impact Analysis** — Estimates potential operational review impact.
+-  **Interactive Dashboard** — Built using Streamlit.
 
 ---
 
-## 🧠 Machine Learning Workflow
+##  Machine Learning Workflow
 
 ```text
 Transaction Input
@@ -63,39 +63,39 @@ Business Risk Decision
 ---
 
 
-## 📸 Dashboard Screenshots
+##  Dashboard Screenshots
 
-### 🛡️ Risk Assessment
+###  Risk Assessment
 
 ![Risk Assessment](assets/screenshots/risk-assessment.png)
 
 ---
 
-### 🔎 SHAP Analysis
+###  SHAP Analysis
 
 ![SHAP Analysis](assets/screenshots/shap-analysis.png)
 
 ---
 
-### 💰 Business Impact Analysis
+###  Business Impact Analysis
 
 ![Business Impact](assets/screenshots/business-impact.png)
 
 ---
 
-### 🚦 Risk Decision
+###  Risk Decision
 
 ![Risk Decision](assets/screenshots/risk-decision.png)
 
 ---
 
-### 🖥️ RiskLens Dashboard
+###  RiskLens Dashboard
 
 ![RiskLens Dashboard](assets/screenshots/dashboard.png)
 
 ---
 
-### ⚖️ False Positive vs Missed Fraud Cost
+###  False Positive vs Missed Fraud Cost
 
 ![False Positive Cost](assets/screenshots/false-positive-cost.png)
 
@@ -103,32 +103,14 @@ Business Risk Decision
 
 ---
 
+##  How to Run
 
-## ⚙️ How to Run
+Follow these steps to run RiskLens locally.
 
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/KHUSHIMISHRA05/risklens-project.git
-
 cd risklens-project
 
-### 2. Add the Trained Model
-
-The trained model file is excluded from GitHub because of its large size.
-
-To run the application locally, place the trained `risk_model.pkl` file inside the `models/` folder.
-
-The required structure is:
-
-```text
-risklens-project/
-│
-├── app.py
-├── requirements.txt
-├── models/
-│   └── risk_model.pkl
-├── src/
-├── notebooks/
-└── assets/
 
