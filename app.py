@@ -3,22 +3,11 @@ import joblib
 import pandas as pd
 import shap
 import matplotlib.pyplot as plt
+from huggingface_hub import hf_hub_download
 
 
 # -------------------------------------------------
-# Load trained model
-# -------------------------------------------------
-
-@st.cache_resource
-def load_model():
-    return joblib.load("models/risk_model.pkl")
-
-
-model = load_model()
-
-
-# -------------------------------------------------
-# Page configuration
+# Page Configuration
 # -------------------------------------------------
 
 st.set_page_config(
@@ -29,11 +18,32 @@ st.set_page_config(
 
 
 # -------------------------------------------------
+# Load Trained Model from Hugging Face
+# -------------------------------------------------
+
+@st.cache_resource
+def load_model():
+
+    model_path = hf_hub_download(
+        repo_id="khushii19/risklens-fraud-model",
+        filename="risk_model.pkl"
+    )
+
+    return joblib.load(model_path)
+
+
+model = load_model()
+
+
+# -------------------------------------------------
 # Title
 # -------------------------------------------------
 
 st.title("🛡️ RiskLens")
-st.subheader("AI-Powered Transaction Fraud Risk Manager")
+
+st.subheader(
+    "AI-Powered Transaction Fraud Risk Manager"
+)
 
 st.write(
     "Enter transaction details below to estimate fraud risk "
@@ -129,28 +139,44 @@ st.divider()
 # Analyze Transaction
 # -------------------------------------------------
 
-if st.button("🔍 Analyze Transaction", width="stretch"):
+if st.button(
+    "🔍 Analyze Transaction",
+    width="stretch"
+):
 
     transaction = {
 
         "Transaction Amount": transaction_amount,
+
         "Payment Method": payment_method,
+
         "Product Category": product_category,
+
         "Quantity": quantity,
+
         "Customer Age": customer_age,
+
         "Device Used": device_used,
+
         "Account Age Days": account_age_days,
+
         "Transaction Hour": transaction_hour
     }
 
-    data = pd.DataFrame([transaction])
+
+    data = pd.DataFrame(
+        [transaction]
+    )
 
 
     # -------------------------------------------------
     # Fraud Prediction
     # -------------------------------------------------
 
-    fraud_probability = model.predict_proba(data)[0][1]
+    fraud_probability = model.predict_proba(
+        data
+    )[0][1]
+
 
     risk_score = round(
         fraud_probability * 100,
@@ -181,7 +207,10 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
     st.divider()
 
-    st.header("🛡️ Risk Assessment")
+    st.header(
+        "🛡️ Risk Assessment"
+    )
+
 
     col1, col2, col3 = st.columns(3)
 
@@ -214,7 +243,9 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     # Risk Decision
     # -------------------------------------------------
 
-    st.subheader("Risk Decision")
+    st.subheader(
+        "Risk Decision"
+    )
 
 
     if risk_score >= 70:
@@ -242,7 +273,9 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
     st.divider()
 
-    st.header("🔎 Why is this transaction risky?")
+    st.header(
+        "🔎 Why is this transaction risky?"
+    )
 
     st.write(
         "SHAP explains which transaction features influenced "
@@ -252,14 +285,20 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
     # Get pipeline components
 
-    preprocessor = model.named_steps["preprocessor"]
+    preprocessor = model.named_steps[
+        "preprocessor"
+    ]
 
-    rf_model = model.named_steps["model"]
+    rf_model = model.named_steps[
+        "model"
+    ]
 
 
     # Transform input
 
-    transformed_data = preprocessor.transform(data)
+    transformed_data = preprocessor.transform(
+        data
+    )
 
 
     if hasattr(
@@ -273,7 +312,8 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     # Feature names
 
     feature_names = (
-        preprocessor.get_feature_names_out()
+        preprocessor
+        .get_feature_names_out()
     )
 
 
@@ -282,6 +322,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     explainer = shap.TreeExplainer(
         rf_model
     )
+
 
     shap_values = explainer.shap_values(
         transformed_data
@@ -363,7 +404,9 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     # SHAP Chart
     # -------------------------------------------------
 
-    st.subheader("📊 Top Risk Factors")
+    st.subheader(
+        "📊 Top Risk Factors"
+    )
 
 
     chart_data = (
@@ -385,15 +428,19 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
         chart_data["SHAP Value"]
     )
 
+
     ax.axvline(0)
+
 
     ax.set_xlabel(
         "SHAP Impact"
     )
 
+
     ax.set_ylabel(
         "Transaction Feature"
     )
+
 
     ax.set_title(
         "Features Influencing Fraud Risk"
@@ -411,7 +458,9 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     # SHAP Details
     # -------------------------------------------------
 
-    st.subheader("📋 SHAP Details")
+    st.subheader(
+        "📋 SHAP Details"
+    )
 
 
     st.dataframe(
@@ -462,7 +511,10 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
     st.divider()
 
-    st.header("💰 Business Impact")
+    st.header(
+        "💰 Business Impact"
+    )
+
 
     st.write(
         "Estimate the operational cost of manually reviewing "
@@ -509,9 +561,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     with col1:
 
         st.metric(
-
             "Estimated Review Cost",
-
             f"₹{estimated_cost:.2f}"
         )
 
@@ -519,9 +569,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     with col2:
 
         st.metric(
-
             "Business Impact",
-
             business_impact
         )
 
@@ -531,7 +579,6 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     if risk_score >= 70:
 
         st.warning(
-
             "💡 Recommendation: Send this transaction for manual "
             "review before approving it."
         )
@@ -539,7 +586,6 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     elif risk_score >= 40:
 
         st.info(
-
             "💡 Recommendation: Consider additional verification "
             "before completing the transaction."
         )
@@ -547,7 +593,6 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     else:
 
         st.success(
-
             "💡 Recommendation: Transaction can proceed with "
             "normal checks."
         )
@@ -563,8 +608,8 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
         "⚖️ False Positive vs Missed Fraud Cost"
     )
 
-    st.write(
 
+    st.write(
         "This analysis shows the business trade-off between "
         "incorrectly flagging genuine customers and missing "
         "fraudulent transactions at different decision thresholds."
@@ -635,13 +680,19 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
             "Account Age Days",
 
-            "Transaction Hour"
+            "Transaction Hour",
+
+            "Is Fraudulent"
         ]
 
 
-        X = df[feature_columns]
+        X = df[
+            feature_columns[:-1]
+        ]
 
-        y = df["Is Fraudulent"]
+        y = df[
+            "Is Fraudulent"
+        ]
 
 
         return X, y
@@ -790,23 +841,16 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     # -------------------------------------------------
 
     total_false_positive_cost = (
-
-        fp
-        *
-        false_positive_cost
+        fp * false_positive_cost
     )
 
 
     total_missed_fraud_cost = (
-
-        fn
-        *
-        missed_fraud_cost
+        fn * missed_fraud_cost
     )
 
 
     total_estimated_cost = (
-
         total_false_positive_cost
         +
         total_missed_fraud_cost
@@ -856,9 +900,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     with col1:
 
         st.metric(
-
             "False Positives",
-
             f"{fp:,}"
         )
 
@@ -866,9 +908,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     with col2:
 
         st.metric(
-
             "Missed Frauds",
-
             f"{fn:,}"
         )
 
@@ -876,9 +916,7 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     with col3:
 
         st.metric(
-
             "Total Estimated Cost",
-
             f"₹{total_estimated_cost:,.2f}"
         )
 
@@ -896,21 +934,18 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
 
         [
             [tn, fp],
-
             [fn, tp]
         ],
 
         index=[
 
             "Actual Genuine",
-
             "Actual Fraud"
         ],
 
         columns=[
 
             "Predicted Genuine",
-
             "Predicted Fraud"
         ]
     )
@@ -929,7 +964,6 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
     # -------------------------------------------------
 
     fig2, ax2 = plt.subplots(
-
         figsize=(9, 4)
     )
 
@@ -971,3 +1005,4 @@ if st.button("🔍 Analyze Transaction", width="stretch"):
         f"The estimated combined business cost is "
         f"₹{total_estimated_cost:,.2f}."
     )
+    
