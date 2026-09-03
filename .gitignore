@@ -4,3 +4,4 @@ __pycache__/
 .env
 data/risk_data.csv
 models/
+app_old.py
