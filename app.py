@@ -48,95 +48,431 @@ FEATURE_COLUMNS = [
 st.markdown(
     """
     <style>
+    /* =====================================================
+       RISKLENS — COLORFUL FINTECH LIGHT UI
+       ===================================================== */
 
-    .main {
-        padding-top: 1rem;
+    html, body, [data-testid="stAppViewContainer"] {
+        background: #F4F7FC !important;
+    }
+
+    .stApp,
+    [data-testid="stAppViewContainer"],
+    section.main,
+    section.main > div,
+    [data-testid="stAppViewContainer"] .main {
+        background: #F4F7FC !important;
+        color: #18233F !important;
+    }
+
+    [data-testid="stAppViewContainer"] {
+        background:
+            radial-gradient(circle at 5% 0%, rgba(115,87,255,.14), transparent 25%),
+            radial-gradient(circle at 95% 0%, rgba(37,199,217,.12), transparent 25%),
+            #F4F7FC !important;
+    }
+
+    .main .block-container {
+        max-width: 1400px !important;
+        padding-top: 2rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #17213B 0%, #334D7B 58%, #2AA6B8 100%) !important;
+        border: 0 !important;
+    }
+
+    [data-testid="stSidebar"] * {
+        color: #FFFFFF !important;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    [data-testid="stMarkdownContainer"] h1,
+    [data-testid="stMarkdownContainer"] h2,
+    [data-testid="stMarkdownContainer"] h3 {
+        color: #18233F !important;
     }
 
     .risklens-title {
-        font-size: 2.7rem;
-        font-weight: 800;
-        letter-spacing: -1px;
+        font-size: 3.2rem;
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -2px;
+        background: linear-gradient(90deg, #253A68, #7357FF, #25AFC7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .risklens-subtitle {
+        color: #71809D !important;
         font-size: 1.05rem;
-        color: #64748b;
-        margin-bottom: 1.2rem;
-    }
-
-    .info-card {
-        border: 1px solid rgba(100,116,139,.20);
-        border-radius: 14px;
-        padding: 1.15rem;
-        background: rgba(255,255,255,.82);
-        min-height: 115px;
-        box-shadow: 0 2px 10px rgba(15,23,42,.04);
-    }
-
-    .info-card h4 {
-        margin: 0 0 .45rem;
-        color: #475569;
-        font-size: .92rem;
-    }
-
-    .info-card p {
-        margin: 0;
-        color: #0f172a;
-        font-size: 1.55rem;
-        font-weight: 800;
-    }
-
-    .hero-card {
-        border-radius: 18px;
-        padding: 1.35rem 1.5rem;
-        background: linear-gradient(
-            135deg,
-            #eff6ff 0%,
-            #f8fafc 100%
-        );
-        border: 1px solid #dbeafe;
         margin-bottom: 1rem;
     }
 
-    .hero-card h3 {
-        margin: 0;
-        font-size: 1.3rem;
+    .page-kicker {
+        color: #7357FF !important;
+        font-size: .75rem;
+        font-weight: 900;
+        letter-spacing: 1.5px;
     }
 
-    .hero-card p {
-        margin: .4rem 0 0;
-        color: #475569;
+    .info-card, .decision-card {
+        border: 1px solid #E1E7F0 !important;
+        border-radius: 18px;
+        padding: 1.15rem 1.25rem;
+        background: #FFFFFF !important;
+        color: #18233F !important;
+        box-shadow: 0 10px 30px rgba(31,48,84,.07);
+    }
+
+    .info-card h4 {
+        color: #71809D !important;
+    }
+
+    .info-card p {
+        color: #18233F !important;
+    }
+
+    .hero-card {
+        border-radius: 24px;
+        padding: 1.7rem 2rem;
+        background: linear-gradient(120deg, #253A68, #6852D9 52%, #25AFC7) !important;
+        box-shadow: 0 18px 45px rgba(54,72,121,.18);
+        margin: 1rem 0 1.3rem;
+    }
+
+    .hero-card h3, .hero-card p {
+        color: #FFFFFF !important;
     }
 
     .risk-high {
-        border-left: 6px solid #dc2626;
-        background: #fef2f2;
+        border-left: 5px solid #F45B78 !important;
+        background: #FFF3F6 !important;
         padding: 1rem;
-        border-radius: 10px;
+        border-radius: 14px;
     }
 
     .risk-medium {
-        border-left: 6px solid #d97706;
-        background: #fffbeb;
+        border-left: 5px solid #FF9D5C !important;
+        background: #FFF8EF !important;
         padding: 1rem;
-        border-radius: 10px;
+        border-radius: 14px;
     }
 
     .risk-low {
-        border-left: 6px solid #16a34a;
-        background: #f0fdf4;
+        border-left: 5px solid #35C98B !important;
+        background: #F0FFF8 !important;
         padding: 1rem;
-        border-radius: 10px;
-    }
-
-    .decision-card {
-        border: 1px solid rgba(100,116,139,.20);
         border-radius: 14px;
-        padding: 1.15rem;
-        background: #fff;
     }
 
+    /* =====================================================
+       ALL STREAMLIT INPUTS — DARK TEXT, WHITE SURFACE
+       ===================================================== */
+
+    [data-testid="stNumberInput"],
+    [data-testid="stSelectbox"],
+    [data-testid="stTextInput"],
+    [data-testid="stTextArea"],
+    [data-testid="stSlider"] {
+        color: #18233F !important;
+    }
+
+    [data-testid="stNumberInput"] label,
+    [data-testid="stSelectbox"] label,
+    [data-testid="stTextInput"] label,
+    [data-testid="stTextArea"] label,
+    [data-testid="stSlider"] label,
+    [data-testid="stWidgetLabel"] p {
+        color: #354463 !important;
+        -webkit-text-fill-color: #354463 !important;
+        font-weight: 750 !important;
+    }
+
+    [data-testid="stNumberInput"] [data-baseweb="input"],
+    [data-testid="stNumberInput"] [data-baseweb="input"] > div,
+    [data-testid="stNumberInput"] input {
+        background: #FFFFFF !important;
+        color: #18233F !important;
+        -webkit-text-fill-color: #18233F !important;
+        opacity: 1 !important;
+        color-scheme: light !important;
+    }
+
+    [data-testid="stNumberInput"] [data-baseweb="input"] {
+        border: 1px solid #D7DFEC !important;
+        border-radius: 13px !important;
+    }
+
+    [data-testid="stNumberInput"] button,
+    [data-testid="stNumberInput"] button p,
+    [data-testid="stNumberInput"] button svg {
+        background: #FFFFFF !important;
+        color: #354463 !important;
+        fill: #354463 !important;
+        -webkit-text-fill-color: #354463 !important;
+        opacity: 1 !important;
+    }
+
+    [data-testid="stSelectbox"] [data-baseweb="select"],
+    [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    [data-testid="stSelectbox"] [data-baseweb="select"] span,
+    [data-testid="stSelectbox"] [data-baseweb="select"] p {
+        background: #FFFFFF !important;
+        color: #18233F !important;
+        -webkit-text-fill-color: #18233F !important;
+        opacity: 1 !important;
+    }
+
+    [data-testid="stSelectbox"] [data-baseweb="select"] {
+        border: 1px solid #D7DFEC !important;
+        border-radius: 13px !important;
+    }
+
+    [data-testid="stSelectbox"] svg {
+        fill: #354463 !important;
+    }
+
+    div[role="listbox"],
+    ul[role="listbox"],
+    div[role="option"] {
+        background: #FFFFFF !important;
+        color: #18233F !important;
+        -webkit-text-fill-color: #18233F !important;
+    }
+
+    div[role="option"]:hover,
+    div[role="option"][aria-selected="true"] {
+        background: #F0EEFF !important;
+        color: #5B43D6 !important;
+    }
+
+    [data-testid="stSlider"] [role="slider"] {
+        background: #7357FF !important;
+        border: 3px solid #FFFFFF !important;
+    }
+
+    [data-testid="stSlider"] [data-baseweb="slider"] > div > div {
+        background: linear-gradient(90deg, #7357FF, #4F8EFF, #25C7D9) !important;
+    }
+
+    .stButton > button {
+        background: linear-gradient(135deg, #7357FF, #4F8EFF, #25C7D9) !important;
+        color: #FFFFFF !important;
+        border: 0 !important;
+        border-radius: 13px !important;
+        font-weight: 850 !important;
+        box-shadow: 0 10px 24px rgba(88,91,220,.22) !important;
+    }
+
+    [data-testid="stMetric"] {
+        background: #FFFFFF !important;
+        border: 1px solid #E1E7F0 !important;
+        border-radius: 18px !important;
+        box-shadow: 0 9px 26px rgba(31,48,84,.06);
+    }
+
+    [data-testid="stMetricLabel"] {
+        color: #71809D !important;
+    }
+
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricValue"] div {
+        color: #18233F !important;
+        -webkit-text-fill-color: #18233F !important;
+    }
+
+    [data-testid="stAlert"],
+    [data-testid="stExpander"] {
+        background: #FFFFFF !important;
+        color: #18233F !important;
+        border-color: #E1E7F0 !important;
+        border-radius: 15px !important;
+    }
+
+    [data-testid="stDataFrame"] {
+        border-radius: 14px !important;
+        border: 1px solid #E1E7F0 !important;
+    }
+
+    hr {
+        border-color: #E1E7F0 !important;
+    }
+
+
+    /* =====================================================
+       PREMIUM RISK ASSESSMENT
+       ===================================================== */
+    .assessment-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin: 8px 0 18px;
+    }
+
+    .assessment-card {
+        position: relative;
+        overflow: hidden;
+        background: #FFFFFF !important;
+        border: 1px solid #E1E7F0 !important;
+        border-radius: 20px;
+        padding: 20px 22px;
+        min-height: 118px;
+        box-shadow: 0 10px 28px rgba(31,48,84,.07);
+    }
+
+    .assessment-card:after {
+        content: "";
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        right: -32px;
+        top: -35px;
+        background: rgba(115,87,255,.08);
+    }
+
+    .assessment-label {
+        color: #71809D !important;
+        font-size: .78rem;
+        font-weight: 850;
+        text-transform: uppercase;
+        letter-spacing: .8px;
+        margin-bottom: 8px;
+    }
+
+    .assessment-value {
+        color: #18233F !important;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.05;
+    }
+
+    .assessment-value.high {
+        color: #E74768 !important;
+    }
+
+    .assessment-value.medium {
+        color: #E58A24 !important;
+    }
+
+    .assessment-value.low {
+        color: #1BA975 !important;
+    }
+
+    .risk-meter {
+        background: #FFFFFF !important;
+        border: 1px solid #E1E7F0 !important;
+        border-radius: 20px;
+        padding: 18px 20px;
+        margin: 6px 0 22px;
+        box-shadow: 0 10px 28px rgba(31,48,84,.06);
+    }
+
+    .risk-meter-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #354463 !important;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .risk-meter-value {
+        color: #7357FF !important;
+        font-size: 1.05rem;
+        font-weight: 900;
+    }
+
+    .risk-meter-track {
+        height: 12px;
+        background: #E8ECF4 !important;
+        border-radius: 99px;
+        overflow: hidden;
+    }
+
+    .risk-meter-fill {
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, #35C98B 0%, #FFB84D 50%, #F45B78 100%) !important;
+    }
+
+    .decision-premium {
+        border-radius: 20px;
+        padding: 22px 24px;
+        margin: 6px 0 22px;
+        background: linear-gradient(135deg, #FFF4F7, #FFF9FB) !important;
+        border: 1px solid #FFD5DE !important;
+        border-left: 6px solid #F45B78 !important;
+        box-shadow: 0 10px 28px rgba(244,91,120,.08);
+    }
+
+    .decision-premium.medium {
+        background: linear-gradient(135deg, #FFF8EF, #FFFCF7) !important;
+        border-color: #FFE2B8 !important;
+        border-left-color: #FF9D5C !important;
+    }
+
+    .decision-premium.low {
+        background: linear-gradient(135deg, #F0FFF8, #F8FFFC) !important;
+        border-color: #C8F1DF !important;
+        border-left-color: #35C98B !important;
+    }
+
+    .decision-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(244,91,120,.12);
+        color: #D83F61 !important;
+        font-size: .74rem;
+        font-weight: 900;
+        letter-spacing: .7px;
+    }
+
+    .decision-premium.medium .decision-badge {
+        background: rgba(255,157,92,.15);
+        color: #C56F16 !important;
+    }
+
+    .decision-premium.low .decision-badge {
+        background: rgba(53,201,139,.14);
+        color: #168A5D !important;
+    }
+
+    .decision-premium h3 {
+        color: #18233F !important;
+        margin: 10px 0 6px;
+        font-size: 1.45rem;
+    }
+
+    .decision-premium p {
+        color: #53627D !important;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .summary-wrap {
+        background: #FFFFFF !important;
+        border: 1px solid #E1E7F0 !important;
+        border-radius: 20px;
+        padding: 8px;
+        box-shadow: 0 10px 28px rgba(31,48,84,.06);
+    }
+
+    @media (max-width: 900px) {
+        .assessment-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .risklens-footer {
+        text-align: center;
+        color: #8290A8 !important;
+        font-size: .82rem;
+        padding: 1.5rem 0 .25rem;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -871,48 +1207,58 @@ elif page == "🔍 Transaction Checker":
                 "### 🎯 Risk Assessment"
             )
 
-            a, b, c = st.columns(3)
+            risk_class = {
+                "HIGH RISK": "high",
+                "MEDIUM RISK": "medium",
+                "LOW RISK": "low",
+            }[level]
 
-            a.metric(
-                "Fraud Probability",
-                f"{prob:.2%}",
-            )
+            st.markdown(
+                f"""
+                <div class="assessment-grid">
+                    <div class="assessment-card">
+                        <div class="assessment-label">Fraud Probability</div>
+                        <div class="assessment-value">{prob:.2%}</div>
+                    </div>
+                    <div class="assessment-card">
+                        <div class="assessment-label">Risk Score</div>
+                        <div class="assessment-value">{score:.1f} <span style="font-size:.95rem;color:#8290A8">/ 100</span></div>
+                    </div>
+                    <div class="assessment-card">
+                        <div class="assessment-label">Risk Level</div>
+                        <div class="assessment-value {risk_class}">{level}</div>
+                    </div>
+                </div>
 
-            b.metric(
-                "Risk Score",
-                f"{score:.1f} / 100",
-            )
-
-            c.metric(
-                "Risk Level",
-                level,
-            )
-
-            st.progress(
-                prob,
-                text=f"Fraud probability: {prob:.2%}",
+                <div class="risk-meter">
+                    <div class="risk-meter-top">
+                        <span>Fraud risk intensity</span>
+                        <span class="risk-meter-value">{prob:.2%}</span>
+                    </div>
+                    <div class="risk-meter-track">
+                        <div class="risk-meter-fill" style="width:{score:.2f}%"></div>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
             )
 
             st.markdown(
                 "### 🛡️ Decision"
             )
 
-            css = {
-                "HIGH RISK": "risk-high",
-                "MEDIUM RISK": "risk-medium",
-                "LOW RISK": "risk-low",
+            decision_class = {
+                "HIGH RISK": "",
+                "MEDIUM RISK": "medium",
+                "LOW RISK": "low",
             }[level]
 
             st.markdown(
                 f"""
-                <div class="{css}">
-
-                <h3>{level}</h3>
-
-                <p>
-                {get_recommendation(level)}
-                </p>
-
+                <div class="decision-premium {decision_class}">
+                    <span class="decision-badge">RECOMMENDED ACTION</span>
+                    <h3>{level}</h3>
+                    <p>{get_recommendation(level)}</p>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -938,10 +1284,20 @@ elif page == "🔍 Transaction Checker":
                 }
             )
 
+            st.markdown(
+                '<div class="summary-wrap">',
+                unsafe_allow_html=True,
+            )
+
             st.dataframe(
                 summary,
                 use_container_width=True,
                 hide_index=True,
+            )
+
+            st.markdown(
+                "</div>",
+                unsafe_allow_html=True,
             )
 
         except Exception as exc:
