@@ -1,4 +1,4 @@
-#  RiskLens
+# 🛡️ RiskLens
 
 ### AI-Powered Transaction Fraud Risk Manager
 
@@ -8,7 +8,7 @@ It combines machine learning, SHAP explainability, and Streamlit to provide an i
 
 ---
 
-##  Overview
+## Overview
 
 Fraud detection systems often focus only on predicting whether a transaction is fraudulent.
 
@@ -28,13 +28,23 @@ The goal is to make fraud predictions easier to understand and useful for risk-m
 
 ##  Key Features
 
--  **Fraud Prediction** — Estimates the probability that a transaction is fraudulent.
--  **Risk Score** — Converts fraud probability into a 0–100 risk score.
--  **Risk Classification** — Categorizes transactions as Low, Medium, or High risk.
--  **SHAP Explainability** — Explains which features influenced the prediction.
--  **Risk Factor Visualization** — Shows the most influential transaction features.
--  **Business Impact Analysis** — Estimates potential operational review impact.
--  **Interactive Dashboard** — Built using Streamlit.
+- **Fraud Prediction** — Estimates the probability that a transaction is fraudulent.
+- **Risk Score** — Converts fraud probability into a 0–100 risk score.
+- **Risk Classification** — Categorizes transactions as Low, Medium, or High risk.
+- **SHAP Explainability** — Explains which features influenced the prediction.
+- **Risk Factor Visualization** — Shows the most influential transaction features.
+- **Business Impact Analysis** — Estimates potential operational review impact.
+- **Interactive Dashboard** — Built using Streamlit.
+
+---
+
+## 🚦 Risk Classification
+
+| Risk Score | Risk Level |
+|------------|------------|
+| < 40 | 🟢 LOW RISK |
+| 40–69 | 🟡 MEDIUM RISK |
+| ≥ 70 | 🔴 HIGH RISK |
 
 ---
 
@@ -51,66 +61,69 @@ Machine Learning Model
        ↓
 Fraud Probability
        ↓
-Risk Score
+Risk Score (0–100)
        ↓
 Risk Classification
        ↓
 SHAP Explanation
        ↓
 Business Risk Decision
-```
 
 ---
 
+# 📸 Dashboard Screenshots
 
-##  Dashboard Screenshots
+## Dashboard
 
-###  Risk Assessment
+![Dashboard](assets/screenshots/01_Dashboard.png)
 
-![Risk Assessment](assets/screenshots/risk-assessment.png)
+![Dashboard](assets/screenshots/02_Dashboard.png)
 
----
-
-###  SHAP Analysis
-
-![SHAP Analysis](assets/screenshots/shap-analysis.png)
+![Dashboard](assets/screenshots/03_Dashboard.png)
 
 ---
 
-###  Business Impact Analysis
+## Transaction Checker
 
-![Business Impact](assets/screenshots/business-impact.png)
+![Transaction Checker](assets/screenshots/04_TransactionChecker.png)
 
----
+![Transaction Checker](assets/screenshots/05_TransactionChecker.png)
 
-###  Risk Decision
-
-![Risk Decision](assets/screenshots/risk-decision.png)
+![Transaction Checker](assets/screenshots/06_TransactionChecker.png)
 
 ---
 
-###  RiskLens Dashboard
+## Explainability
 
-![RiskLens Dashboard](assets/screenshots/dashboard.png)
+![Explainability](assets/screenshots/07_Explainability.png)
 
----
+![Explainability](assets/screenshots/08_Explainability.png)
 
-###  False Positive vs Missed Fraud Cost
-
-![False Positive Cost](assets/screenshots/false-positive-cost.png)
-
-![False Positive Cost Chart](assets/screenshots/false-positive-cost-chart.png)
+![Explainability](assets/screenshots/09_Explainability.png)
 
 ---
 
-##  How to Run
+## Risk Analytics
 
-Follow these steps to run RiskLens locally.
+![Risk Analytics](assets/screenshots/10_RiskAnalytics.png)
 
-### 1. Clone the Repository
+![Risk Analytics](assets/screenshots/11_RiskAnalytics.png)
 
-```bash
-git clone https://github.com/KHUSHIMISHRA05/risklens-project.git
-cd risklens-project
+![Risk Analytics](assets/screenshots/12_RiskAnalytics.png)
 
+---
+
+## Business Impact
+
+![Business Impact](assets/screenshots/13_BusinessImpact.png)
+
+![Business Impact](assets/screenshots/14_BusinessImpact.png)
+
+---
+
+## Model Information
+
+![Model Information](assets/screenshots/15_ModelInformation.png)
+
+![Model Information](assets/screenshots/16_ModelInformation.png)
 
