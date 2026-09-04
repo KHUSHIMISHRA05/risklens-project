@@ -70,60 +70,164 @@ SHAP Explanation
 Business Risk Decision
 
 ---
+#  RiskLens
 
-# 📸 Dashboard Screenshots
+### AI-Powered Transaction Fraud Risk Manager
 
-## Dashboard
+RiskLens is an explainable machine learning application that analyzes transaction data and estimates the probability of fraud.
 
-![Dashboard](assets/screenshots/01_Dashboard.png)
-
-![Dashboard](assets/screenshots/02_Dashboard.png)
-
-![Dashboard](assets/screenshots/03_Dashboard.png)
+It combines machine learning, SHAP explainability, and Streamlit to provide an interactive fraud-risk assessment dashboard.
 
 ---
 
-## Transaction Checker
+##  Overview
+
+Fraud detection systems often focus only on predicting whether a transaction is fraudulent.
+
+RiskLens goes one step further by providing:
+
+- Fraud probability
+- Risk score
+- Risk classification
+- Explainable AI using SHAP
+- Top transaction risk factors
+- Business impact estimation
+- Risk recommendations
+
+The goal is to make fraud predictions easier to understand and useful for risk-management decisions.
+
+---
+
+##  Key Features
+
+-  **Fraud Prediction** — Estimates the probability that a transaction is fraudulent.
+-  **Risk Score** — Converts fraud probability into a 0–100 risk score.
+-  **Risk Classification** — Categorizes transactions as Low, Medium, or High risk.
+-  **SHAP Explainability** — Explains which features influenced the prediction.
+-  **Risk Factor Visualization** — Shows the most influential transaction features.
+-  **Business Impact Analysis** — Estimates potential operational review impact.
+-  **Interactive Dashboard** — Built using Streamlit.
+
+---
+
+##  Machine Learning Workflow
+
+```text
+Transaction Input
+       ↓
+Data Preprocessing
+       ↓
+Feature Transformation
+       ↓
+Machine Learning Model
+       ↓
+Fraud Probability
+       ↓
+Risk Score
+       ↓
+Risk Classification
+       ↓
+SHAP Explanation
+       ↓
+Business Risk Decision
+```
+
+---
+
+## 📸 Dashboard Screenshots
+
+### Risk Assessment
+
+![Risk Assessment](assets/screenshots/01_Dashboard.png)
+
+---
+
+### Dashboard Overview
+
+![Dashboard Overview](assets/screenshots/02_Dashboard.png)
+
+---
+
+### Dashboard Analytics
+
+![Dashboard Analytics](assets/screenshots/03_Dashboard.png)
+
+---
+
+### Transaction Checker
 
 ![Transaction Checker](assets/screenshots/04_TransactionChecker.png)
 
-![Transaction Checker](assets/screenshots/05_TransactionChecker.png)
+---
 
-![Transaction Checker](assets/screenshots/06_TransactionChecker.png)
+### Fraud Risk Result
+
+![Fraud Risk Result](assets/screenshots/05_TransactionChecker.png)
 
 ---
 
-## Explainability
+### Transaction Risk Score
 
-![Explainability](assets/screenshots/07_Explainability.png)
-
-![Explainability](assets/screenshots/08_Explainability.png)
-
-![Explainability](assets/screenshots/09_Explainability.png)
+![Transaction Risk Score](assets/screenshots/06_TransactionChecker.png)
 
 ---
 
-## Risk Analytics
+### SHAP Analysis
+
+![SHAP Analysis](assets/screenshots/07_Explainability.png)
+
+---
+
+### Top Risk Drivers
+
+![Top Risk Drivers](assets/screenshots/08_Explainability.png)
+
+---
+
+### Explainable AI
+
+![Explainable AI](assets/screenshots/09_Explainability.png)
+
+---
+
+### Risk Analytics
 
 ![Risk Analytics](assets/screenshots/10_RiskAnalytics.png)
 
-![Risk Analytics](assets/screenshots/11_RiskAnalytics.png)
+---
 
-![Risk Analytics](assets/screenshots/12_RiskAnalytics.png)
+### Risk Distribution
+
+![Risk Distribution](assets/screenshots/11_RiskAnalytics.png)
 
 ---
 
-## Business Impact
+### Risk Analytics Overview
 
-![Business Impact](assets/screenshots/13_BusinessImpact.png)
-
-![Business Impact](assets/screenshots/14_BusinessImpact.png)
+![Risk Analytics Overview](assets/screenshots/12_RiskAnalytics.png)
 
 ---
 
-## Model Information
+### Business Impact Analysis
+
+![Business Impact Analysis](assets/screenshots/13_BusinessImpact.png)
+
+---
+
+### Business Impact Overview
+
+![Business Impact Overview](assets/screenshots/14_BusinessImpact.png)
+
+---
+
+### Model Information
 
 ![Model Information](assets/screenshots/15_ModelInformation.png)
 
-![Model Information](assets/screenshots/16_ModelInformation.png)
+---
 
+### Model Details
+
+![Model Details](assets/screenshots/16_ModelInformation.png)
+
+---
