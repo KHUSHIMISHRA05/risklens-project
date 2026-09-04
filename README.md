@@ -222,12 +222,12 @@ Business Risk Decision
 
 ### Model Information
 
-![Model Information](assets/screenshots/15_ModelInformation.png)
+![Model Information](assets/screenshots/15_Modellnformation.png)
 
 ---
 
 ### Model Details
 
-![Model Details](assets/screenshots/16_ModelInformation.png)
+![Model Details](assets/screenshots/16_Modellnformation.png)
 
 ---
